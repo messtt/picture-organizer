@@ -8,16 +8,14 @@ import os
 current_dir = os.path.dirname(os.path.realpath(__file__))
 parent_dir = os.path.abspath(os.path.join(current_dir, os.pardir))
 sys.path.append(parent_dir)
-from app import parse
+from app import organize as parse
 
 def start_organization():
-    parse.parse(origin=app.manage_folder_frame.get_source_folder(),
-                destination=app.manage_folder_frame.get_destination_folder(),
-                btn1=app.manage_sort_frame.var1.get(),
-                btn2=app.manage_sort_frame.var2.get(),
-                btn3=app.manage_sort_frame.var3.get(),
-                btn4=app.manage_sort_frame.var4.get(),
-                btn5=app.manage_sort_frame.var5.get())
+    print(app.manage_folder_frame.get_source_folder())
+    print(app.manage_folder_frame.get_destination_folder())
+    app.progress_bar['value'] = 0
+    parse.parse(app)
+                
 
 class FolderSelector(tk.Frame):
     def __init__(self, parent, folder_type):
@@ -68,18 +66,24 @@ class SortingOptions(tk.Frame):
         self.var3 = tk.IntVar()
         self.var4 = tk.IntVar()
         self.var5 = tk.IntVar()
+        self.var6 = tk.IntVar()
+        self.var7 = tk.IntVar()
         
         self.check_button1 = tk.Checkbutton(self, text="jour", variable=self.var1)
         self.check_button2 = tk.Checkbutton(self, text="mois", variable=self.var2)
         self.check_button3 = tk.Checkbutton(self, text="année", variable=self.var3)
         self.check_button4 = tk.Checkbutton(self, text="photo", variable=self.var4)
         self.check_button5 = tk.Checkbutton(self, text="vidéo", variable=self.var5)
+        self.check_button6 = tk.Checkbutton(self, text="couper", variable=self.var6)
+        self.check_button7 = tk.Checkbutton(self, text="sous-dossier", variable=self.var7)
         
         self.check_button1.pack(side="left", expand=True)
         self.check_button2.pack(side="left", expand=True)
         self.check_button3.pack(side="left", expand=True)
         self.check_button4.pack(side="left", expand=True)
         self.check_button5.pack(side="left", expand=True)
+        self.check_button6.pack(side="left", expand=True)
+        self.check_button7.pack(side="left", expand=True)
 
 
 class MainApplication(tk.Tk):
