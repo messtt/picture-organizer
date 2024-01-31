@@ -122,8 +122,3 @@ class MainApplication(tk.Tk):
         self.manage_sort_frame.pack(side="top", fill="x", pady=20)
         self.avancment_frame.pack(side="bottom", fill="x", pady=20)
         self.manage_folder_frame.pack(side="bottom", fill="x")
-
-
-if __name__ == "__main__":
-    app = MainApplication()
-    app.mainloop()

@@ -1,5 +1,6 @@
-def main():
-    print("Hello World!")
+from gui.main_window import MainApplication
 
 if __name__ == "__main__":
-    main()
+    app = MainApplication()
+    app.mainloop()
+    
